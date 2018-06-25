@@ -10,7 +10,9 @@ const paths = require('../config/paths')
 const spinner = ora()
 const filename = 'sprites.svg'
 const inputPath = resolve(paths.client, 'icons')
-const outputPath = resolve(paths.images, 'icons', filename)
+const outputPath = resolve(paths.images, filename)
+console.log(inputPath)
+console.log(outputPath)
 const commands = {
   svgo: `svgo -f ${inputPath}`,
   generate: `svg-sprite-generate -d ${inputPath} -o ${outputPath}`
@@ -20,7 +22,12 @@ clear()
 
 spinner.start(chalk.cyan.bold('Icons optimization...\n'))
 
-exec.quiet(commands.svgo).then(() => {
+exec.quiet(commands.svgo).then((optimizationError, stdout, stderr) => {
+  if (optimizationError) {
+    console.error(stderr)
+    process.exit(1)
+  }
+
   spinner.succeed(chalk.green.bold('Icons optimization complete.\n'))
 
   spinner.start(chalk.cyan.bold('Generating icons sprite...\n'))

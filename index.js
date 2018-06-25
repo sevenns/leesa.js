@@ -8,7 +8,7 @@ if (process.env.NODE_ENV === 'production') {
 
 const main = new Main()
 
-$(document).ready(() => {
+document.addEventListener('DOMContentLoaded', () => {
   const data = {
     w: $(window).outerWidth(true),
     h: $(window).outerHeight(true),
@@ -18,7 +18,7 @@ $(document).ready(() => {
   return main.loaded ? main.loaded(data) : null
 })
 
-$(window).scroll(() => {
+window.addEventListener('scroll', () => {
   const data = {
     w: $(window).outerWidth(true),
     h: $(window).outerHeight(true),
@@ -28,7 +28,7 @@ $(window).scroll(() => {
   return main.scrolled ? main.scrolled(data) : null
 })
 
-$(window).resize(() => {
+window.addEventListener('resize', () => {
   const data = {
     w: $(window).outerWidth(true),
     h: $(window).outerHeight(true),
@@ -38,7 +38,7 @@ $(window).resize(() => {
   return main.resized ? main.resized(data) : null
 })
 
-$(window).on('load', () => {
+window.addEventListener('load', () => {
   const data = {
     w: $(window).outerWidth(true),
     h: $(window).outerHeight(true),

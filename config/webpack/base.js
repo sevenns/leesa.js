@@ -53,7 +53,7 @@ module.exports = () => {
         '~views': paths.views
       },
 
-      extensions: ['.js']
+      extensions: ['.js', '.css', '.sass']
     },
     node: {
       __filename: true,
