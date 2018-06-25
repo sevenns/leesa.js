@@ -1,0 +1,22 @@
+include /components/Head
+include /components/Header.pug
+include /components/Footer.pug
+include /components/Preloader.pug
+
+doctype html
+html(lang='en')
+  head
+    +Head({
+      title: 'Leesa.js',
+      description: 'Small framework for standard frontend development'
+    })
+
+  body
+    +Preloader()
+    +Header()
+
+    block app
+
+    +Footer()
+
+    script(src='/scripts/app.js')

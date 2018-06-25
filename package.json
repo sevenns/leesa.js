@@ -1,0 +1,57 @@
+{
+  "name": "leesa",
+  "version": "1.1.4",
+  "description": "Small framework for standard frontend development",
+  "author": "alexander sevenns",
+  "license": "MIT",
+  "bin": {
+    "leesa": "./bin/leesa"
+  },
+  "devDependencies": {
+    "eslint": "^4.19.1",
+    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint-loader": "^2.0.0",
+    "eslint-plugin-import": "^2.12.0",
+    "node-sass": "^4.9.0",
+    "sass-loader": "^7.0.1"
+  },
+  "dependencies": {
+    "sass-lint": "^1.12.1",
+    "autoprefixer": "^8.5.0",
+    "babel-core": "^6.26.3",
+    "babel-eslint": "^8.2.3",
+    "babel-loader": "^7.1.4",
+    "babel-preset-backpack": "^0.7.0",
+    "chalk": "^2.4.1",
+    "clear": "^0.1.0",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.11",
+    "cross-spawn": "^6.0.5",
+    "executive": "^1.5.13",
+    "express": "^4.16.3",
+    "file-loader": "^1.1.11",
+    "friendly-errors-webpack-plugin": "^1.7.0",
+    "mini-css-extract-plugin": "^0.4.0",
+    "nodemon": "^1.17.4",
+    "optimize-css-assets-webpack-plugin": "^4.0.1",
+    "ora": "^2.1.0",
+    "postcss-loader": "^2.1.5",
+    "pug": "^2.0.3",
+    "pug-html-loader": "^1.1.5",
+    "rimraf": "^2.6.2",
+    "style-loader": "^0.21.0",
+    "svg-sprite-generator": "0.0.7",
+    "svgo": "^1.0.5",
+    "uglifyjs-webpack-plugin": "^1.2.5",
+    "weery": "^1.1.7",
+    "webpack": "^4.8.3",
+    "webpack-dev-middleware": "^3.1.3",
+    "webpack-hot-middleware": "^2.22.2",
+    "webpack-merge": "^4.1.2"
+  },
+  "browserslist": [
+    "> 10%",
+    "last 2 versions",
+    "not ie <= 10"
+  ]
+}

@@ -1,0 +1,51 @@
+#!/usr/bin/env node
+const spawn = require('cross-spawn')
+const { resolve, join } = require('path')
+const pkg = require('../package.json')
+
+const defaultCommand = 'dev'
+const commands = new Set([
+  defaultCommand,
+  'build',
+  'start',
+  'icons'
+])
+let cmd = process.argv[2]
+let args = null
+let bin = null
+
+if (new Set(['--version', '-v']).has(cmd)) {
+  console.log(`leesa.js v${pkg.version}`)
+  process.exit(0)
+}
+
+if (new Set(['--help', '-h']).has(cmd)) {
+  console.log(`
+    Usage
+      $ leesa <command>
+    Available commands
+      $ leesa ${defaultCommand}
+      $ leesa build
+      $ leesa start
+      $ leesa icons
+  `)
+  process.exit(0)
+}
+
+if (commands.has(cmd)) {
+  args = process.argv.slice(3)
+} else {
+  cmd = defaultCommand
+  args = process.argv.slice(2)
+}
+
+bin = resolve(join(__dirname, cmd))
+
+const proc = spawn(bin, args, { stdio: 'inherit' })
+
+proc.on('close', code => process.exit(code))
+
+proc.on('error', (error) => {
+  console.error(error)
+  process.exit(1)
+})
