@@ -1,7 +1,6 @@
 include /components/Head
 include /components/Header.pug
 include /components/Footer.pug
-include /components/Preloader.pug
 
 doctype html
 html(lang='en')
@@ -12,7 +11,6 @@ html(lang='en')
     })
 
   body
-    +Preloader()
     +Header()
 
     block app

@@ -1,10 +1,4 @@
-import Preloader from './Preloader'
-
 export default class Main {
-  constructor () {
-    this._preloader = new Preloader({ el: '.preloader' })
-  }
-
   loaded ({ w, h, scroll }) {
     console.log(`
       ~SCROLLED~
@@ -32,14 +26,12 @@ export default class Main {
     `)
   }
 
-  beforeLoaded ({ w, h, scroll }) {
+  loading ({ w, h, scroll }) {
     console.log(`
       ~BEFORELOADED~
       Width: ${w}
       Height: ${h}
       Scroll: ${scroll}
     `)
-
-    this._preloader.init()
   }
 }

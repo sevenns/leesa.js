@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 const ora = require('ora')
 const chalk = require('chalk')
-const clear = require('clear')
+// const clear = require('clear')
 const exec = require('executive')
 const { resolve } = require('path')
 
@@ -11,20 +11,22 @@ const spinner = ora()
 const filename = 'sprites.svg'
 const inputPath = resolve(paths.client, 'icons')
 const outputPath = resolve(paths.images, filename)
-console.log(inputPath)
-console.log(outputPath)
+// const outputPath = `${paths.images}/${filename}`
+const svgo = resolve(paths.root, 'node_modules/.bin/svgo')
+const ssg = resolve(paths.root, 'node_modules/.bin/svg-sprite-generate')
 const commands = {
-  svgo: `svgo -f ${inputPath}`,
-  generate: `svg-sprite-generate -d ${inputPath} -o ${outputPath}`
+  svgo: `${svgo} -f ${inputPath}`,
+  generate: `${ssg} -d ${inputPath} -o ${outputPath}`
 }
 
-clear()
+// clear()
 
 spinner.start(chalk.cyan.bold('Icons optimization...\n'))
 
-exec.quiet(commands.svgo).then((optimizationError, stdout, stderr) => {
-  if (optimizationError) {
-    console.error(stderr)
+exec.quiet(commands.svgo).then((optimizationError) => {
+  if (optimizationError.status) {
+    spinner.fail(chalk.green.red('Icons optimization fail.\n'))
+    console.error(optimizationError.stderr)
     process.exit(1)
   }
 
@@ -32,7 +34,13 @@ exec.quiet(commands.svgo).then((optimizationError, stdout, stderr) => {
 
   spinner.start(chalk.cyan.bold('Generating icons sprite...\n'))
 
-  exec.quiet(commands.generate).then(() => {
+  exec.quiet(commands.generate).then((generateError) => {
+    if (generateError.status) {
+      spinner.fail(chalk.green.red('Generating icons sprite fail.\n'))
+      console.error(generateError.stderr)
+      process.exit(1)
+    }
+
     spinner.succeed(chalk.green.bold('Generating icons sprite complete.\n'))
   })
 })

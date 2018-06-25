@@ -1,4 +1,3 @@
-import $ from 'weery'
 import Main from '~client/classes/Main'
 import '~client/styles/index'
 
@@ -10,9 +9,9 @@ const main = new Main()
 
 document.addEventListener('DOMContentLoaded', () => {
   const data = {
-    w: $(window).outerWidth(true),
-    h: $(window).outerHeight(true),
-    scroll: $(window).scrollTop()
+    w: window.innerWidth,
+    h: window.innerHeight,
+    scroll: window.pageYOffset
   }
 
   return main.loaded ? main.loaded(data) : null
@@ -20,9 +19,9 @@ document.addEventListener('DOMContentLoaded', () => {
 
 window.addEventListener('scroll', () => {
   const data = {
-    w: $(window).outerWidth(true),
-    h: $(window).outerHeight(true),
-    scroll: $(window).scrollTop()
+    w: window.innerWidth,
+    h: window.innerHeight,
+    scroll: window.pageYOffset
   }
 
   return main.scrolled ? main.scrolled(data) : null
@@ -30,9 +29,9 @@ window.addEventListener('scroll', () => {
 
 window.addEventListener('resize', () => {
   const data = {
-    w: $(window).outerWidth(true),
-    h: $(window).outerHeight(true),
-    scroll: $(window).scrollTop()
+    w: window.innerWidth,
+    h: window.innerHeight,
+    scroll: window.pageYOffset
   }
 
   return main.resized ? main.resized(data) : null
@@ -40,12 +39,12 @@ window.addEventListener('resize', () => {
 
 window.addEventListener('load', () => {
   const data = {
-    w: $(window).outerWidth(true),
-    h: $(window).outerHeight(true),
-    scroll: $(window).scrollTop()
+    w: window.innerWidth,
+    h: window.innerHeight,
+    scroll: window.pageYOffset
   }
 
-  return main.beforeLoaded ? main.beforeLoaded(data) : null
+  return main.loading ? main.loading(data) : null
 })
 
 function multipleRequire (r) { r.keys().forEach(r) }
