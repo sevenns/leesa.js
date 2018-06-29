@@ -1,3 +1,11 @@
 module.exports = {
-  rootDir: 'client'
+  rootDir: 'client',
+
+  development (config) {
+    return config
+  },
+
+  production (config) {
+    return config
+  }
 }

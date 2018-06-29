@@ -1,4 +1,6 @@
 #!/usr/bin/env node
+const { existsSync } = require('fs')
+const { resolve } = require('path')
 const ora = require('ora')
 const chalk = require('chalk')
 const paths = require('../config/paths')
@@ -7,8 +9,18 @@ const webpack = require('webpack')
 const clear = require('clear')
 const webpackConfig = require('../config/webpack/build')
 
-const compiler = webpack(webpackConfig)
 const spinner = ora()
+const leesaConfigPath = resolve('leesa.config.js')
+let compiler = webpack(webpackConfig)
+
+if (existsSync(leesaConfigPath)) {
+  /* eslint-disable-next-line */
+  let leesaConfig = require(leesaConfigPath)
+
+  if (leesaConfig.production) {
+    compiler = webpack(leesaConfig.production(webpackConfig, webpack))
+  }
+}
 
 clear()
 
