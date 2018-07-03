@@ -10,7 +10,7 @@ const CopyWebpackPlugin = require('copy-webpack-plugin')
 const paths = require('../paths')
 const base = require('./base')
 
-const postcssPath = resolve(paths.leesa, 'postcss.js')
+const postcssPath = resolve(paths.leesa)
 
 module.exports = merge(base(), {
   mode: 'production',

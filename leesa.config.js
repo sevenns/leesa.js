@@ -1,5 +1,14 @@
 module.exports = {
-  rootDir: 'client',
+  dirs: {
+    src: 'client',
+    build: 'app',
+    views: 'client/views'
+  },
+
+  server: {
+    host: process.env.HOST || 'localhost',
+    port: process.env.PORT || 8080
+  },
 
   postcss: {
     plugins: {
