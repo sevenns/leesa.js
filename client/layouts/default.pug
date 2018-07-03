@@ -6,14 +6,15 @@ doctype html
 html(lang='en')
   head
     +Head({
-      title: 'Leesa.js',
+      title: 'leesa.js',
       description: 'Small framework for standard frontend development'
     })
 
   body
     +Header()
 
-    block app
+    .app
+      block app
 
     +Footer()
 

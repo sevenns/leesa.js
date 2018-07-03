@@ -9,7 +9,15 @@
 
 You need [nodejs](https://nodejs.org/en/) with npm (LTS recommended)
 
-### - Setting package.json
+### - Installing
+
+``` bash
+npm install leesa --save-dev
+```
+
+### - Using
+
+ - Setting package.json
 
 ``` json5
 {
@@ -20,6 +28,21 @@ You need [nodejs](https://nodejs.org/en/) with npm (LTS recommended)
     "icons": "leesa icons"
   }
 }
+```
+
+ - Running
+
+``` bash
+
+# serve with hot reload at localhost:8080
+$ npm run dev
+
+# build for production and launch server
+$ npm run build
+$ npm run start
+
+# craft svg icons
+$ npm run icons
 ```
 
 ### - Documentation

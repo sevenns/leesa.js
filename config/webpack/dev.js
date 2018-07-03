@@ -15,7 +15,9 @@ const defaultRules = [{
     {
       loader: 'postcss-loader',
       options: {
-        path: resolve(paths.leesa, 'postcss.js')
+        config: {
+          path: resolve(paths.leesa)
+        }
       }
     }
   ]
@@ -30,7 +32,9 @@ if (moduleExists('sass-loader') && moduleExists('node-sass')) {
       {
         loader: 'postcss-loader',
         options: {
-          path: resolve(paths.leesa, 'postcss.js')
+          config: {
+            path: resolve(paths.leesa)
+          }
         }
       },
       'sass-loader'
