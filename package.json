@@ -1,9 +1,16 @@
 {
   "name": "leesa",
-  "version": "1.1.9",
+  "version": "1.1.10",
   "description": "Small framework for standard frontend development",
   "author": "alexander sevenns",
   "license": "MIT",
+  "keywords": [
+    "leesa",
+    "leesa.js",
+    "small",
+    "framework",
+    "frontend"
+  ],
   "bin": {
     "leesa": "./bin/leesa"
   },
@@ -11,15 +18,13 @@
     "icons": "node ./bin/icons"
   },
   "devDependencies": {
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
     "eslint-loader": "^2.0.0",
     "eslint-plugin-import": "^2.12.0",
     "node-sass": "^4.9.0",
+    "sass-lint": "^1.12.1",
     "sass-loader": "^7.0.1"
   },
   "dependencies": {
-    "sass-lint": "^1.12.1",
     "autoprefixer": "^8.5.0",
     "babel-core": "^6.26.3",
     "babel-eslint": "^8.2.3",

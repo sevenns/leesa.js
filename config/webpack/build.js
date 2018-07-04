@@ -7,10 +7,66 @@ const MiniCssExtractPlugin = require('mini-css-extract-plugin')
 const OptimizeCSSAssetsPlugin = require('optimize-css-assets-webpack-plugin')
 const CopyWebpackPlugin = require('copy-webpack-plugin')
 
+const moduleExists = require('../../helpers/module-exists')
 const paths = require('../paths')
 const base = require('./base')
 
-const postcssPath = resolve(paths.leesa)
+const defaultRules = [
+  {
+    test: /\.pug$/,
+    use: [
+      {
+        loader: 'file-loader',
+        options: {
+          name: 'html/[path][name].html',
+          context: paths.views
+        }
+      },
+      {
+        loader: 'pug-html-loader',
+        options: {
+          basedir: paths.client,
+          pretty: true
+        }
+      }
+    ],
+  },
+
+  {
+    test: /\.css$/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          config: {
+            path: resolve(paths.leesa)
+          }
+        }
+      }
+    ]
+  }
+]
+
+if (moduleExists('sass-loader') && moduleExists('node-sass')) {
+  defaultRules.push({
+    test: /\.sass$/,
+    use: [
+      MiniCssExtractPlugin.loader,
+      'css-loader',
+      {
+        loader: 'postcss-loader',
+        options: {
+          config: {
+            path: resolve(paths.leesa)
+          }
+        }
+      },
+      'sass-loader'
+    ]
+  })
+}
 
 module.exports = merge(base(), {
   mode: 'production',
@@ -23,42 +79,7 @@ module.exports = merge(base(), {
     publicPath: paths.static
   },
   module: {
-    rules: [
-      {
-        test: /\.sass$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          'css-loader',
-          {
-            loader: 'postcss-loader',
-            options: {
-              path: postcssPath
-            }
-          },
-          'sass-loader'
-        ]
-      },
-
-      {
-        test: /\.pug$/,
-        use: [
-          {
-            loader: 'file-loader',
-            options: {
-              name: 'html/[path][name].html',
-              context: paths.views
-            }
-          },
-          {
-            loader: 'pug-html-loader',
-            options: {
-              basedir: paths.client,
-              pretty: true
-            }
-          }
-        ],
-      }
-    ]
+    rules: defaultRules
   },
   optimization: {
     minimizer: [

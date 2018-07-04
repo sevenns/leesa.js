@@ -5,7 +5,7 @@ const fs = require('fs')
 
 const router = express.Router()
 
-router.use('/*', async (req, res, next) => {
+router.use('/*', (req, res, next) => {
   let url = req.originalUrl
   let view = 'index'
   let isPath = true
@@ -29,14 +29,14 @@ router.use('/*', async (req, res, next) => {
       fs.existsSync(absolute.path) ||
       fs.existsSync(absolute.file)
     ) {
-      await res.render(view)
+      res.render(view)
     } else {
       res.status(404)
-      await res.render('error/404')
+      res.render('error/404')
     }
-  } else {
-    await next()
   }
+
+  next()
 })
 
 module.exports = router
