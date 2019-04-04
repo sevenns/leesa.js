@@ -1,5 +1,5 @@
-const { existsSync } = require('fs')
 const path = require('path')
+const { existsSync } = require('fs')
 
 const moduleExists = require('../../helpers/module-exists')
 const paths = require('../paths')

@@ -7,4 +7,6 @@ block description
   meta(name='description', content='Small framework for standard frontend development')
 
 block app
-  span Oops, unexpected error :(
+  .error
+    .error__status Unexpected error - 500
+    .error__message= error

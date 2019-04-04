@@ -1,8 +1,8 @@
 #!/usr/bin/env node
 const fs = require('fs')
 const chalk = require('chalk')
-const clear = require('clear')
 const express = require('express')
+
 const paths = require('../config/paths')
 const config = require('../config/server')
 
@@ -13,9 +13,6 @@ if (!fs.existsSync(paths.app)) {
 
 const app = express()
 const { host, port } = config
-
-const message = 'The server is launched at:'
-const info = `${host}:${port}`
 
 app.use(express.static(paths.app))
 
@@ -29,7 +26,10 @@ app.get('/:name', (req, res) => {
   }
 })
 
+app.get('*', (req, res) => {
+  res.redirect('/html/error/404.html')
+})
+
 app.listen(port, host, () => {
-  clear()
-  console.log(chalk.green.bold(`${message} ${info}`))
+  console.log(chalk.green(`• Server launched at http://${host}:${port}/`))
 })

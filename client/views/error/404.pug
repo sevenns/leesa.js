@@ -7,4 +7,15 @@ block description
   meta(name='description', content='Small framework for standard frontend development')
 
 block app
-  span Oops, page not found :(
+  .error
+    .error__status Not found - 404
+    .error__message
+      | Oops, page
+      |
+      | with path
+      |
+      | "
+      strong= path
+      | "
+      |
+      | not found :(

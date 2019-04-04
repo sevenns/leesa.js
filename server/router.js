@@ -1,11 +1,12 @@
-const express = require('express')
-const paths = require('../config/paths')
-const { resolve } = require('path')
 const fs = require('fs')
+const express = require('express')
+const { resolve } = require('path')
+
+const paths = require('../config/paths')
 
 const router = express.Router()
 
-router.use('/*', (req, res, next) => {
+router.use((req, res) => {
   let url = req.originalUrl
   let view = 'index'
   let isPath = true
@@ -26,17 +27,23 @@ router.use('/*', (req, res, next) => {
 
   if (isPath) {
     if (
-      fs.existsSync(absolute.path) ||
-      fs.existsSync(absolute.file)
+      fs.existsSync(absolute.path)
+      || fs.existsSync(absolute.file)
     ) {
-      res.render(view)
+      res.render(view, {}, (error, html) => {
+        if (error) {
+          console.error(error)
+          res.status(500)
+          res.render('error/500', { error })
+        } else {
+          res.send(html)
+        }
+      })
     } else {
       res.status(404)
-      res.render('error/404')
+      res.render('error/404', { path: req.originalUrl })
     }
   }
-
-  next()
 })
 
 module.exports = router

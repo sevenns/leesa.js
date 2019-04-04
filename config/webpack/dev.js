@@ -1,11 +1,12 @@
-const { resolve } = require('path')
 const webpack = require('webpack')
+const { resolve } = require('path')
 const merge = require('webpack-merge')
 const FriendlyErrors = require('friendly-errors-webpack-plugin')
+const SimpleProgressWebpackPlugin = require('simple-progress-webpack-plugin')
 
-const moduleExists = require('../../helpers/module-exists')
-const paths = require('../paths')
 const base = require('./base')
+const paths = require('../paths')
+const moduleExists = require('../../helpers/module-exists')
 
 const defaultRules = [{
   test: /\.css$/,
@@ -63,10 +64,9 @@ module.exports = merge(base(), {
       NODE_ENV: 'development',
       __DEV__: true
     }),
-    new FriendlyErrors({
-      clearConsole: true,
-    }),
+    new FriendlyErrors({ clearConsole: true }),
     new webpack.HotModuleReplacementPlugin(),
-    new webpack.NoEmitOnErrorsPlugin()
+    new webpack.NoEmitOnErrorsPlugin(),
+    new SimpleProgressWebpackPlugin()
   ]
 })

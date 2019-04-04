@@ -22,16 +22,23 @@ if (existsSync(leesaConfigPath)) {
 }
 
 module.exports = (app) => {
-  app.use(devMiddleware(compiler, {
+  const devMiddlewareInstance = devMiddleware(compiler, {
     publicPath: webpackConfig.output.publicPath,
     logLevel: 'silent'
-  }))
+  })
 
-  app.use(hotMiddleware(compiler, {
+  const hotMiddlewareInstance = hotMiddleware(compiler, {
     log: false,
     heartbeat: 2000
-  }))
+  })
 
+  app.use(devMiddlewareInstance)
+  app.use(hotMiddlewareInstance)
   app.use(express.static(paths.static))
   app.use('/', router)
+
+  return {
+    devMiddleware: devMiddlewareInstance,
+    hotMiddleware: hotMiddlewareInstance
+  }
 }
