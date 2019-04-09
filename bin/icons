@@ -1,18 +1,18 @@
 #!/usr/bin/env node
 const ora = require('ora')
+const path = require('path')
 const chalk = require('chalk')
 const clear = require('clear')
 const exec = require('executive')
-const { resolve } = require('path')
 
 const paths = require('../config/paths')
 
 const spinner = ora()
 const filename = 'sprites.svg'
-const inputPath = resolve(paths.client, 'icons')
-const outputPath = resolve(paths.images, filename)
-const svgo = resolve(paths.root, 'node_modules/.bin/svgo')
-const ssg = resolve(paths.root, 'node_modules/.bin/svg-sprite-generate')
+const inputPath = path.resolve(paths.client, 'icons')
+const outputPath = path.resolve(paths.images, filename)
+const svgo = path.resolve(paths.root, 'node_modules/.bin/svgo')
+const ssg = path.resolve(paths.root, 'node_modules/.bin/svg-sprite-generate')
 const commands = {
   svgo: `${svgo} -f ${inputPath}`,
   generate: `${ssg} -d ${inputPath} -o ${outputPath}`
@@ -20,26 +20,56 @@ const commands = {
 
 clear()
 
-spinner.start(chalk.cyan.bold('Icons optimization...\n'))
+if (new Set(['--help', '-h']).has(process.argv[2])) {
+  console.log(`
+    Usage
+      $ leesa icons <options>
+    Available options
+      $ leesa icons -o # Run with icon optimization
+  `)
+  process.exit(0)
+}
 
-exec.quiet(commands.svgo).then((optimizationError) => {
-  if (optimizationError.status) {
-    spinner.fail(chalk.green.red('Icons optimization fail.\n'))
-    console.error(optimizationError.stderr)
-    process.exit(1)
-  }
+if (new Set(['-o']).has(process.argv[2])) {
+  optimize().then(() => generateSprite())
+} else {
+  generateSprite()
+}
 
-  spinner.succeed(chalk.green.bold('Icons optimization complete.\n'))
+function optimize () {
+  return new Promise((resolve, reject) => {
+    spinner.start(chalk.cyan.bold('Icons optimization...\n'))
 
-  spinner.start(chalk.cyan.bold('Generating icons sprite...\n'))
+    exec.quiet(commands.svgo)
+      .then((optimizationError) => {
+        if (optimizationError.status) {
+          spinner.fail(chalk.green.red('Icons optimization fail.\n'))
+          console.error(optimizationError.stderr)
+          process.exit(1)
+        }
 
-  exec.quiet(commands.generate).then((generateError) => {
-    if (generateError.status) {
-      spinner.fail(chalk.green.red('Generating icons sprite fail.\n'))
-      console.error(generateError.stderr)
-      process.exit(1)
-    }
-
-    spinner.succeed(chalk.green.bold('Generating icons sprite complete.\n'))
+        spinner.succeed(chalk.green.bold('Icons optimization complete.\n'))
+        resolve(true)
+      })
+      .catch(error => reject(error))
   })
-})
+}
+
+function generateSprite () {
+  return new Promise((resolve, reject) => {
+    spinner.start(chalk.cyan.bold('Generating icons sprite...\n'))
+
+    exec.quiet(commands.generate)
+      .then((generateError) => {
+        if (generateError.status) {
+          spinner.fail(chalk.green.red('Generating icons sprite fail.\n'))
+          console.error(generateError.stderr)
+          process.exit(1)
+        }
+
+        spinner.succeed(chalk.green.bold('Generating icons sprite complete.\n'))
+        resolve(true)
+      })
+      .catch(error => reject(error))
+  })
+}
