@@ -14,7 +14,7 @@ if (!fs.existsSync(paths.app)) {
 const app = express()
 const { host, port } = config
 
-app.use(express.static(paths.app))
+app.use(express.static(paths.app, { extensions: ['html'] }))
 
 app.get('/', (req, res) => {
   res.redirect('/html')
@@ -27,8 +27,9 @@ app.get('/:name', (req, res) => {
 })
 
 app.get('*', (req, res) => {
-  res.redirect('/html/error/404.html')
+  res.redirect('/html/error/404')
 })
+
 
 app.listen(port, host, () => {
   console.log(chalk.green(`• Server launched at http://${host}:${port}/`))
