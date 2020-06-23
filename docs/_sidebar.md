@@ -5,4 +5,5 @@
 * **Configuration**
   * [Intro](configuration/introduction)
   * [Directories](configuration/dirs)
+  * [Server](configuration/server)
   * [Development tools](configuration/development-tools)
