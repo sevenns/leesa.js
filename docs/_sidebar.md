@@ -6,4 +6,5 @@
   * [Intro](configuration/introduction)
   * [Directories](configuration/dirs)
   * [Server](configuration/server)
+  * [Webpack](configuration/webpack)
   * [Development tools](configuration/development-tools)
