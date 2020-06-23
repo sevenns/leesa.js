@@ -51,7 +51,7 @@ function optimize () {
         spinner.succeed(chalk.green.bold('Icons optimization complete.\n'))
         resolve(true)
       })
-      .catch(error => reject(error))
+      .catch((error) => reject(error))
   })
 }
 
@@ -70,6 +70,6 @@ function generateSprite () {
         spinner.succeed(chalk.green.bold('Generating icons sprite complete.\n'))
         resolve(true)
       })
-      .catch(error => reject(error))
+      .catch((error) => reject(error))
   })
 }

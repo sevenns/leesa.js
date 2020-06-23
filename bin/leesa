@@ -1,7 +1,10 @@
 #!/usr/bin/env node
+const { existsSync } = require('fs')
 const spawn = require('cross-spawn')
 const { resolve, join } = require('path')
 const pkg = require('../package.json')
+
+const paths = require('../config/paths')
 
 const defaultCommand = 'dev'
 const commands = new Set([
@@ -41,9 +44,16 @@ if (commands.has(cmd)) {
 
 bin = resolve(join(__dirname, cmd))
 
+const userBrowserslistrc = resolve(paths.root, '.browserslistrc')
+if (existsSync(userBrowserslistrc)) {
+  process.env.BROWSERSLIST_CONFIG = resolve(paths.root, '.browserslistrc')
+} else {
+  process.env.BROWSERSLIST_CONFIG = resolve(paths.leesa, '.browserslistrc')
+}
+
 const proc = spawn(bin, args, { stdio: 'inherit' })
 
-proc.on('close', code => process.exit(code))
+proc.on('close', (code) => process.exit(code))
 
 proc.on('error', (error) => {
   console.error(error)

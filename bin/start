@@ -30,7 +30,6 @@ app.get('*', (req, res) => {
   res.redirect('/html/error/404')
 })
 
-
 app.listen(port, host, () => {
   console.log(chalk.green(`• Server launched at http://${host}:${port}/`))
 })
