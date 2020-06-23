@@ -1,6 +1,5 @@
 .DS_Store
+.vscode
 node_modules
-package-lock.json
-yarn.lock
 app
 /static/images/sprites.svg
