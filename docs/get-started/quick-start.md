@@ -53,3 +53,7 @@ yarn dev
 ```
 
 > Go to http://localhost:8080/ to verify
+
+## Example
+
+> https://codesandbox.io/s/leesajs-quick-start-example-1j3ex
