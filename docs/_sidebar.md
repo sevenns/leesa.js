@@ -3,4 +3,5 @@
   * [Quick start](get-started/quick-start)
 
 * **Configuration**
+  * [Intro](configuration/introduction)
   * [Development tools](configuration/development-tools)

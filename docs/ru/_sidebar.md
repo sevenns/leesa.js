@@ -3,4 +3,5 @@
   * [Быстрый старт](ru/get-started/quick-start)
 
 * **Конфигурация**
+  * [Вступление](ru/configuration/introduction)
   * [Инструменты разработки](ru/configuration/development-tools)
