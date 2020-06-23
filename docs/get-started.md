@@ -1,7 +1,7 @@
 ## Requirements
 
- - [nodejs](https://nodejs.org/en/) (LTS or higher)
- - npm or [yarn](https://yarnpkg.com/)
+- [nodejs](https://nodejs.org/en/) (LTS or higher)
+- npm or [yarn](https://yarnpkg.com/)
 
 ## Installation
 

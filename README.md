@@ -1,25 +1,26 @@
 <p align="center">
-	<a href="https://github.com/sevenns/leesa.js" title="leesa.js"><img src="https://raw.githubusercontent.com/sevenns/leesa.js/master/leesa.png" width="128px"></a>
-	<h3 align="center">leesa.js</h3>
+  <a href="https://github.com/sevenns/leesa.js" title="leesa.js"><img src="docs/_media/logo.png" width="128px"></a>
+  <h3 align="center">leesa.js</h3>
 </p>
 
-<p align="center">Small framework for standard frontend development.</p>
+<p align="center">Small framework for standard frontend development</p>
 
-### - Requirements
+## Requirements
 
-You need [nodejs](https://nodejs.org/en/) with npm (LTS recommended)
+- [nodejs](https://nodejs.org/en/) (LTS or higher)
+- npm or [yarn](https://yarnpkg.com/)
 
-### - Installing
+## Installation
+
+- **Add leesa to your project**
 
 ``` bash
-npm install leesa --save-dev
+yarn add leesa --dev
 ```
 
-### - Using
+- **Setup scripts in package.json**
 
- - Setting package.json
-
-``` json5
+``` json
 {
   "scripts": {
     "dev": "leesa",
@@ -30,21 +31,18 @@ npm install leesa --save-dev
 }
 ```
 
- - Running
+## Usage
 
 ``` bash
+# Serve with hot reload
+yarn dev
 
-# serve with hot reload at localhost:8080
-$ npm run dev
+# Build for production
+yarn build
 
-# build for production and launch server
-$ npm run build
-$ npm run start
+# Launch in production mode
+yarn start
 
-# craft svg icons
-$ npm run icons
+# Craft svg icons
+yarn icons
 ```
-
-### - Documentation
-
-Soon...
