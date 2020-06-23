@@ -10,18 +10,6 @@ module.exports = {
     port: process.env.PORT || 8080
   },
 
-  postcss: {
-    plugins: {
-      autoprefixer: {
-        browsers: [
-          '> 10%',
-          'last 4 versions',
-          'not ie <= 9'
-        ]
-      }
-    }
-  },
-
   development (config) {
     return config
   },
