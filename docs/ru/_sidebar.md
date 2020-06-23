@@ -4,4 +4,5 @@
 
 * **Конфигурация**
   * [Вступление](ru/configuration/introduction)
+  * [Директории](ru/configuration/dirs)
   * [Инструменты разработки](ru/configuration/development-tools)

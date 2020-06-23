@@ -4,4 +4,5 @@
 
 * **Configuration**
   * [Intro](configuration/introduction)
+  * [Directories](configuration/dirs)
   * [Development tools](configuration/development-tools)
