@@ -3,7 +3,7 @@
 - [nodejs](https://nodejs.org/en/) (LTS or higher)
 - npm or [yarn](https://yarnpkg.com/)
 
-## Installation
+## Setup
 
 - **Add leesa to your project**
 

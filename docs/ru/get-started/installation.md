@@ -3,15 +3,15 @@
  - [nodejs](https://nodejs.org/en/) (LTS версия или выше)
  - npm или [yarn](https://yarnpkg.com/)
 
-## Установка
+## Установка и настройка
 
-- **Добавление leesa в проект**
+- **Добавьте leesa в проект**
 
 ``` bash
 yarn add leesa --dev
 ```
 
-- **Настройка scripts в package.json**
+- **Настройте scripts в package.json**
 
 ``` json
 {

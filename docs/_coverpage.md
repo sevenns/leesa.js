@@ -5,6 +5,6 @@
 > Small framework for standard frontend development
 
 [GitHub](https://github.com/sevenns/leesa.js)
-[Get Started](/get-started)
+[Get Started](/get-started/installation)
 
 ![color](#f8f8f8)
