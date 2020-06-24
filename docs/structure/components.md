@@ -7,5 +7,3 @@ include /components/Component.pug
 
 //- ...
 ```
-
-## Example

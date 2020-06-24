@@ -8,5 +8,3 @@ The `classes` directory contains all js code of project. The **leesa.js** uses a
 - **loading** - Executed when a *loaded* event occurs on `window` object
 
 > You can define your own methods inside `Main.js`, and also describe the `constructor`
-
-## Example
