@@ -3,7 +3,10 @@
   * [Quick start](get-started/quick-start)
 
 * **Structure**
+  * [classes](structure/classes)
   * [layouts](structure/layouts)
+  * [views](structure/views)
+  * [components](structure/components)
   * [styles](structure/styles)
   * [icons](structure/icons)
   * [static](structure/static)

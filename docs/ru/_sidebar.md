@@ -3,7 +3,10 @@
   * [Быстрый старт](ru/get-started/quick-start)
 
 * **Структура**
+  * [classes](ru/structure/classes)
   * [layouts](ru/structure/layouts)
+  * [views](ru/structure/views)
+  * [components](ru/structure/components)
   * [styles](ru/structure/styles)
   * [icons](ru/structure/icons)
   * [static](ru/structure/static)
