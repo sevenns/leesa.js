@@ -1,16 +1,9 @@
-<p align="center">
-  <a href="https://github.com/sevenns/leesa.js" title="leesa.js"><img src="docs/_media/logo.png" width="128px"></a>
-  <h3 align="center">leesa.js</h3>
-</p>
-
-<p align="center">Small framework for standard frontend development</p>
-
 ## Requirements
 
 - [nodejs](https://nodejs.org/en/) (LTS or higher)
 - npm or [yarn](https://yarnpkg.com/)
 
-## Installation
+## Setup
 
 - **Add leesa to your project**
 
